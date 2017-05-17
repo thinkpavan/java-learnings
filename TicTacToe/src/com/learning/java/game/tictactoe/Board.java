@@ -28,7 +28,7 @@ public class Board {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("********************");
+		builder.append("********************\n");
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
 				builder.append(board[i][j] + "\t");
@@ -62,12 +62,14 @@ public class Board {
 		return retValue;
 	}
 
-	private boolean checkVertical() {
+	public boolean checkVertical() {
 		boolean retValue = true;
 		for (int verticalIndex = 0; verticalIndex < SIZE; verticalIndex++) {
+			retValue = true;
 			for (int i = 0; i < SIZE; i++) {
-				if (board[verticalIndex][0] != board[verticalIndex][i]) {
-					return false;
+				if (board[0][verticalIndex] != board[i][verticalIndex]) {
+					retValue = false;
+					break;
 				}
 			}
 			if (retValue) {
@@ -77,12 +79,14 @@ public class Board {
 		return retValue;
 	}
 
-	private boolean checkHorizontal() {
+	public boolean checkHorizontal() {
 		boolean retValue = true;
 		for (int horizontalIndex = 0; horizontalIndex < SIZE; horizontalIndex++) {
+			retValue = true;
 			for (int i = 0; i < SIZE; i++) {
-				if (board[horizontalIndex][0] != board[i][horizontalIndex]) {
-					return false;
+				if (board[horizontalIndex][0] != board[horizontalIndex][i]) {
+					retValue = false;
+					break;
 				}
 			}
 			if (retValue) {
@@ -92,7 +96,7 @@ public class Board {
 		return retValue;
 	}
 
-	private boolean checkDiagnoal() {
+	public boolean checkDiagnoal() {
 		int x = 0, y = 0;
 		boolean retValue = true;
 		for (int i = 0, j = 0; i < SIZE; i++, j++) {

@@ -5,13 +5,13 @@ import org.junit.Test;
 
 
 public class TestBoard {
-	private char[][] horizontalSuccess = {{'X', 'X', 'X'}, 
-										  {'O', 'O', 'O'},
-										  {'X', 'X', 'O'}};
+	private char[][] horizontalSuccess = {{'X', 'O', 'X'}, 
+										  {'O', 'X', 'O'},
+										  {'X', 'X', 'X'}};
 	
 	private char[][] verticalSuccess = {{'X', 'O', 'X'}, 
-										{'X', 'O', 'O'},
-										{'X', 'X', 'O'}};
+										{'O', 'O', 'X'},
+										{'O', 'X', 'X'}};
 
 	private char[][] diagnoalSuccess = {{'O', 'O', 'X'}, 
 										{'X', 'O', 'O'},
@@ -21,24 +21,28 @@ public class TestBoard {
 									  {'X', 'X', 'O'}, 
 									  {'O', 'X', 'O'}};
 
+
 	@Test
 	public void testHorizontalSuccess() {
 		Board board = new Board(horizontalSuccess);
-		boolean retValue = board.isFull();
+		boolean retValue = board.checkHorizontal();
 		Assert.assertTrue(retValue);
 	}
+
 	@Test
 	public void testVerticalSuccess() {
 		Board board = new Board(verticalSuccess);
-		boolean retValue = board.isFull();
+		boolean retValue = board.checkVertical();
 		Assert.assertTrue(retValue);
 	}
+
 	@Test
 	public void testDiagnoalSuccess() {
 		Board board = new Board(diagnoalSuccess);
-		boolean retValue = board.isFull();
+		boolean retValue = board.checkDiagnoal();
 		Assert.assertTrue(retValue);
 	}
+
 	@Test
 	public void testFailure() {
 		Board board = new Board(failue);
