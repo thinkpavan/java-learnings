@@ -76,7 +76,7 @@ public class Board {
 		for (int verticalIndex = 0; verticalIndex < SIZE; verticalIndex++) {
 			flag = true;
 			for (int i = 0; i < SIZE; i++) {
-				if (board[0][verticalIndex] != board[i][verticalIndex] && board[i][verticalIndex] != '-') {
+				if (board[0][verticalIndex] != board[i][verticalIndex] || board[i][verticalIndex] == '-') {
 					flag = false;
 					break;
 				}
@@ -100,7 +100,7 @@ public class Board {
 		for (int horizontalIndex = 0; horizontalIndex < SIZE; horizontalIndex++) {
 			flag = true;
 			for (int i = 0; i < SIZE; i++) {
-				if (board[horizontalIndex][0] != board[horizontalIndex][i]&& board[horizontalIndex][i] != '-') {
+				if (board[horizontalIndex][0] != board[horizontalIndex][i] || board[horizontalIndex][i] == '-') {
 					flag= false;
 					break;
 				}
@@ -123,7 +123,7 @@ public class Board {
 		int x = 0, y = 0;
 		boolean flag = true;
 		for (int i = 0, j = 0; i < SIZE; i++, j++) {
-			if (board[x][y] != board[i][j]&&  board[x][y] != '-') {
+			if (board[x][y] != board[i][j] ||  board[x][y] == '-') {
 				flag =  false;
 			}
 		}
@@ -136,10 +136,10 @@ public class Board {
 			}
 			return retValue;
 		}
-		x = SIZE;
-		y = SIZE;
-		for (int i = 3, j = 3; i > 0; i--, j--) {
-			if (board[x][y] != board[i][j]&& board[x][y] != '-') {
+		x = SIZE-1;
+		y = SIZE-1;
+		for (int i = 2, j = 2; i >= 0; i--, j--) {
+			if (board[x][y] != board[i][j]|| board[x][y]== '-') {
 				flag =  false;
 			}
 		}

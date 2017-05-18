@@ -23,7 +23,10 @@ public class ConsoleRunner {
 			int y = sc.nextInt();
 			
 			game.playerPlacePeace(x, y);
-	
+			if(game.getGameStatus() != GameStatus.IN_PROGRESS){
+				System.out.println(game.getBoard()+"\n"+game.getGameStatus());
+				break;
+			}
 			game.aiPlacePeace();
 			
 			System.out.println(game.getBoard()+"\n"+game.getGameStatus());
