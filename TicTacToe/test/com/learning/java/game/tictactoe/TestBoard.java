@@ -25,28 +25,28 @@ public class TestBoard {
 	@Test
 	public void testHorizontalSuccess() {
 		Board board = new Board(horizontalSuccess);
-		boolean retValue = board.checkHorizontal();
-		Assert.assertTrue(retValue);
+		GameStatus retValue = board.checkHorizontal();
+		Assert.assertEquals(GameStatus.X_WON, retValue);
 	}
 
 	@Test
 	public void testVerticalSuccess() {
 		Board board = new Board(verticalSuccess);
-		boolean retValue = board.checkVertical();
-		Assert.assertTrue(retValue);
+		GameStatus retValue = board.checkVertical();
+		Assert.assertEquals(GameStatus.X_WON, retValue);
 	}
 
 	@Test
 	public void testDiagnoalSuccess() {
 		Board board = new Board(diagnoalSuccess);
-		boolean retValue = board.checkDiagnoal();
-		Assert.assertTrue(retValue);
+		GameStatus retValue = board.checkDiagnoal();
+		Assert.assertEquals(GameStatus.O_WON, retValue);
 	}
 
 	@Test
 	public void testFailure() {
 		Board board = new Board(failue);
 		boolean retValue = board.isFull();
-		Assert.assertFalse(retValue);
+		Assert.assertTrue(retValue);
 	}
 }

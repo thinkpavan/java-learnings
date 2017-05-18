@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ConsoleRunner {
 	private boolean playerX;
 	private boolean challenger;
+	private Scanner sc;
 
 	public ConsoleRunner(boolean playerX, boolean challenger) {
 		this.playerX = playerX;
@@ -15,12 +16,19 @@ public class ConsoleRunner {
 
 		Game game = new Game(true, true);
 
-		for (int i = 0; i < 9; i++) {
-			Scanner sc = new Scanner(System.in);
+		do{
+			sc = new Scanner(System.in);
 			System.out.println("Enter x and y position");
 			int x = sc.nextInt();
 			int y = sc.nextInt();
 			
-		}
+			game.playerPlacePeace(x, y);
+	
+			game.aiPlacePeace();
+			
+			System.out.println(game.getBoard()+"\n"+game.getGameStatus());
+			
+		}while( game.getGameStatus() == GameStatus.IN_PROGRESS );
+		System.out.println(" Game status "+game.getGameStatus());
 	}
 }
