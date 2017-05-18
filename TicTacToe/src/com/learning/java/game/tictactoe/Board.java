@@ -6,10 +6,16 @@ public class Board {
 
 	public Board() {
 		board = new char[SIZE][SIZE];
+		char ch = ' ';
+		for (int i = 0; i < this.board.length; i++) {
+			for (int j = 0; j < this.board[i].length; j++) {
+				this.board[i][j] = ch;
+			}
+		}
 	}
 
 	public Board(Board board) {
-		this.board = new char[SIZE][SIZE];
+		this();
 		for (int i = 0; i < this.board.length; i++) {
 			for (int j = 0; j < this.board[i].length; j++) {
 				this.board[i][j] = board.get(i, j);
