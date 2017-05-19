@@ -15,7 +15,7 @@ public class Board {
 	}
 
 	public Board(Board board) {
-		this();
+		this.board = new char[SIZE][SIZE];
 		for (int i = 0; i < this.board.length; i++) {
 			for (int j = 0; j < this.board[i].length; j++) {
 				this.board[i][j] = board.get(i, j);
@@ -82,12 +82,7 @@ public class Board {
 				}
 			}
 			if (flag) {
-				char ch = board[0][verticalIndex];
-				if ( ch == 'X'){
-					retValue = GameStatus.X_WON;
-				}else{
-					retValue = GameStatus.O_WON;
-				}
+				retValue = whoWon(board[0][verticalIndex]);
 				break;
 			}
 		}
@@ -99,6 +94,7 @@ public class Board {
 		boolean flag = true;
 		for (int horizontalIndex = 0; horizontalIndex < SIZE; horizontalIndex++) {
 			flag = true;
+			
 			for (int i = 0; i < SIZE; i++) {
 				if (board[horizontalIndex][0] != board[horizontalIndex][i] || board[horizontalIndex][i] == '-') {
 					flag= false;
@@ -106,12 +102,7 @@ public class Board {
 				}
 			}
 			if (flag) {
-				char ch = board[horizontalIndex][0];
-				if ( ch == 'X'){
-					retValue = GameStatus.X_WON;
-				}else{
-					retValue = GameStatus.O_WON;
-				}
+				retValue = whoWon(board[horizontalIndex][0]);
 				break;
 			}
 		}
@@ -128,13 +119,8 @@ public class Board {
 			}
 		}
 		if (flag) {
-			char ch = board[0][0];
-			if ( ch == 'X'){
-				retValue = GameStatus.X_WON;
-			}else{
-				retValue = GameStatus.O_WON;
-			}
-			return retValue;
+			return whoWon(board[0][0]);
+			
 		}
 		x = SIZE-1;
 		y = SIZE-1;
@@ -145,13 +131,17 @@ public class Board {
 		}
 
 		if (flag) {
-			char ch = board[3][3];
-			if ( ch == 'X'){
-				retValue = GameStatus.X_WON;
-			}else{
-				retValue = GameStatus.O_WON;
-			}
-			return retValue;
+			return whoWon(board[3][3]);
+		}
+		return retValue;
+	}
+	
+	private GameStatus whoWon(char ch){
+		GameStatus retValue = null;
+		if ( ch == 'X'){
+			retValue = GameStatus.X_WON;
+		}else{
+			retValue = GameStatus.O_WON;
 		}
 		return retValue;
 	}
