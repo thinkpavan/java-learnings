@@ -46,4 +46,39 @@ public class Order implements Serializable {
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
+	
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", itemPrice=" + itemPrice
+				+ ", unitCount=" + unitCount + ", itemDescription="
+				+ itemDescription + "]";
+	}
+
+	public static class OrderBuilder{
+		private int nestedOrderId;
+		private double nestedItemPrice;
+		private int nestedUnitCount;
+		private String nestedItemDescription;
+		
+		public OrderBuilder setOrderId(int nestedOrderId){
+			this.nestedOrderId = nestedOrderId;
+			return this;
+		}
+		public OrderBuilder setItemPrice(int nestedItemPrice){
+			this.nestedItemPrice = nestedItemPrice;
+			return this;
+		}
+		public OrderBuilder setUnitCount(int nestedUnitCount){
+			this.nestedUnitCount = nestedUnitCount;
+			return this;
+		}
+		public OrderBuilder setItemDescription(String nestedItemDescription){
+			this.nestedItemDescription = nestedItemDescription;
+			return this;
+		}
+		
+		public Order createOrder(){
+			return new Order(nestedOrderId,nestedItemPrice,nestedUnitCount,nestedItemDescription);
+		}
+	}
 }
