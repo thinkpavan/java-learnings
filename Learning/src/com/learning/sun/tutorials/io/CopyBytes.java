@@ -1,4 +1,4 @@
-package com.learning.sun.tutorials;
+package com.learning.sun.tutorials.io;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
